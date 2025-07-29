@@ -75,6 +75,7 @@ class ImageCropper implements ImageCropperInterface
             if (!file_exists($fullDirectoryPath)) {
                 mkdir($fullDirectoryPath, 0755, true);
                 chmod($fullDirectoryPath, 0755);
+                chown($fullDirectoryPath, "www-data");
             }
         }
 
