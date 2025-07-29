@@ -29,8 +29,12 @@ class ImageCropper implements ImageCropperInterface
     /**
      * {@inheritdoc}
      */
-    public function crop(string $sourcePath, int $width, int $height): string
+    public function crop(?string $sourcePath, int $width, int $height): string
     {
+        if(empty($sourcePath))
+        {
+            $sourcePath = $this->fallbackImage;
+        }
         $sourcePath = ltrim($sourcePath, '/');
 
         $dirname = pathinfo($sourcePath, PATHINFO_DIRNAME);
@@ -50,7 +54,8 @@ class ImageCropper implements ImageCropperInterface
 
         // Return fallback image if the source file could not be found
         if (!$disk->exists($inputFullPath)) {
-            return asset($this->fallbackImage);
+            $inputFullPath = $this->fallbackImage;
+            // return asset($this->fallbackImage);
         }
 
         // Read the file content
