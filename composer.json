@@ -1,0 +1,24 @@
+{
+  "name": "imeysam/laravel-image-cropper",
+  "description": "Simple Laravel image cropper",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "IMeysam\\ImageCropper\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "intervention/image": "^2.7"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Imeysam\\ImageCropper\\Providers\\CropperServiceProvider"
+      ],
+      "aliases": {
+        "Cropper": "Imeysam\\ImageCropper\\Facades\\Cropper"
+      }
+    }
+  }
+}
