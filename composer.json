@@ -1,7 +1,9 @@
 {
   "name": "imeysam/laravel-image-cropper",
-  "description": "Simple Laravel image cropper",
+  "description": "This package helps developers to easily change images dimensions.",
   "type": "library",
+  "license": "MIT",
+  "keywords": ["Laravel","Image","Cropper"],
   "autoload": {
     "psr-4": {
       "Imeysam\\ImageCropper\\": "src/"
@@ -20,5 +22,6 @@
         "Cropper": "Imeysam\\ImageCropper\\Facades\\Cropper"
       }
     }
-  }
+  },
+  "minimum-stablity": "dev"
 }
