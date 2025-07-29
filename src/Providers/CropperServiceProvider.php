@@ -1,10 +1,10 @@
 <?php
 
-namespace IMeysam\ImageCropper\Providers;
+namespace Imeysam\ImageCropper\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use IMeysam\ImageCropper\ImageCropper;
-use IMeysam\ImageCropper\Contracts\ImageCropperInterface;
+use Imeysam\ImageCropper\ImageCropper;
+use Imeysam\ImageCropper\Contracts\ImageCropperInterface;
 use Intervention\Image\ImageManager;
 
 class CropperServiceProvider extends ServiceProvider

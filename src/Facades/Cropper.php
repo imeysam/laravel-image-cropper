@@ -1,6 +1,6 @@
 <?php
 
-namespace IMeysam\ImageCropper\Facades;
+namespace Imeysam\ImageCropper\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

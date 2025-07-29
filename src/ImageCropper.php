@@ -1,8 +1,8 @@
 <?php
 
-namespace IMeysam\ImageCropper;
+namespace Imeysam\ImageCropper;
 
-use IMeysam\ImageCropper\Contracts\ImageCropperInterface;
+use Imeysam\ImageCropper\Contracts\ImageCropperInterface;
 use Intervention\Image\ImageManager;
 
 class ImageCropper implements ImageCropperInterface

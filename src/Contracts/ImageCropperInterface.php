@@ -1,6 +1,6 @@
 <?php
 
-namespace IMeysam\ImageCropper\Contracts;
+namespace Imeysam\ImageCropper\Contracts;
 
 interface ImageCropperInterface
 {
