@@ -17,7 +17,7 @@ class CropperServiceProvider extends ServiceProvider
             return new ImageCropper(new ImageManager());
         });
 
-        $this->app->alias(ImageCropperInterface::class, 'image-cropper');
+        $this->app->alias(ImageCropperInterface::class, 'laravel-image-cropper');
     }
 
     public function boot(): void
