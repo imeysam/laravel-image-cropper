@@ -1,13 +1,13 @@
 <?php
 
-namespace Imeysam\ImageCropper;
+namespace Imeysam\Picsize;
 
-use Imeysam\ImageCropper\Contracts\ImageCropperInterface;
+use Imeysam\Picsize\Contracts\PicsizeInterface;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 
-class ImageCropper implements ImageCropperInterface
+class Picsize implements PicsizeInterface
 {
     protected ImageManager $imageManager;
 
@@ -20,16 +20,16 @@ class ImageCropper implements ImageCropperInterface
     {
         $this->imageManager = $imageManager;
 
-        $this->disk = config('cropper.disk', 'public');
-        $this->inputPath = trim(config('cropper.input_path', 'uploads'), '/');
-        $this->outputPath = trim(config('cropper.output_path', 'images'), '/');
-        $this->fallbackImage = config('cropper.fallback_image', 'images/default.jpg');
+        $this->disk = config('picsize.disk', 'public');
+        $this->inputPath = trim(config('picsize.input_path', 'uploads'), '/');
+        $this->outputPath = trim(config('picsize.output_path', 'images'), '/');
+        $this->fallbackImage = config('picsize.fallback_image', 'images/default.jpg');
     }
 
     /**
      * {@inheritdoc}
      */
-    public function crop(?string $sourcePath, int $width, int $height): string
+    public function resize(?string $sourcePath, int $width, int $height): string
     {
         if(empty($sourcePath))
         {
@@ -47,7 +47,7 @@ class ImageCropper implements ImageCropperInterface
 
         $disk = Storage::disk($this->disk);
 
-        // If the cropped image exists
+        // If the resized image exists
         if ($disk->exists($outputFullPath)) {
             return $disk->url($outputFullPath);
         }
@@ -79,7 +79,7 @@ class ImageCropper implements ImageCropperInterface
             }
         }
 
-        // Store the cropped image on the disk
+        // Store the resized image on the disk
         $disk->put($outputFullPath, (string) $image->encode());
 
         return $disk->url($outputFullPath);

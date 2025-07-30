@@ -1,13 +1,13 @@
 <?php
 
-namespace Imeysam\ImageCropper\Facades;
+namespace Imeysam\Picsize\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Cropper extends Facade
+class Picsize extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'laravel-image-cropper';
+        return 'laravel-picsize';
     }
 }

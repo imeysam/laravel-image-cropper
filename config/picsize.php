@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option controls which filesystem disk will be used for both
-    | reading the original images and saving the cropped images.
+    | reading the original images and saving the resized images.
     | You can set it to any disk defined in config/filesystems.php.
     |
     | Example: 'public', 'local', 's3'
@@ -37,10 +37,10 @@ return [
     | Default Output Directory
     |--------------------------------------------------------------------------
     |
-    | Path to the folder where cropped images will be saved.
+    | Path to the folder where resized images will be saved.
     | This path is relative to the root of the selected disk.
     |
-    | Example: if you use the "public" disk, cropped images will be saved in:
+    | Example: if you use the "public" disk, resized images will be saved in:
     | storage/app/public/images
     |
     */

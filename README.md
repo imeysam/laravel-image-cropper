@@ -1,14 +1,14 @@
-# Laravel Image Cropper
+# Laravel Picsize
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/imeysam/laravel-image-cropper.svg?style=flat-square)](https://packagist.org/packages/imeysam/laravel-image-cropper)
-[![Total Downloads](https://img.shields.io/packagist/dt/imeysam/laravel-image-cropper.svg?style=flat-square)](https://packagist.org/packages/imeysam/laravel-image-cropper)
-[![License](https://img.shields.io/github/license/imeysam/laravel-image-cropper.svg?style=flat-square)](LICENSE)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/imeysam/laravel-picsize.svg?style=flat-square)](https://packagist.org/packages/imeysam/laravel-picsize)
+[![Total Downloads](https://img.shields.io/packagist/dt/imeysam/laravel-picsize.svg?style=flat-square)](https://packagist.org/packages/imeysam/laravel-picsize)
+[![License](https://img.shields.io/github/license/imeysam/laravel-picsize.svg?style=flat-square)](LICENSE)
 
 ---
 
-## ✂️ Simple & Flexible Laravel Image Cropper
+## ✂️ Simple & Flexible Laravel Picsize
 
-**Laravel Image Cropper** is a simple, flexible and SOLID-friendly Laravel package that helps you crop and resize images on the fly, then store and reuse the resized versions — all with one line of code.
+**Laravel Picsize** is a simple, flexible and SOLID-friendly Laravel package that helps you resize images on the fly, then store and reuse the resized versions — all with one line of code.
 
 It’s designed for Laravel projects that need **on-demand thumbnails**, **resized images**, or **optimized storage**, without reinventing the wheel every time.
 
@@ -16,7 +16,7 @@ It’s designed for Laravel projects that need **on-demand thumbnails**, **resiz
 
 ## 📋 Features
 
-✅ Simple Facade: `Cropper::crop($path, $width, $height)`  
+✅ Simple Facade: `Picsize::resize($path, $width, $height)`  
 ✅ Disk-based storage (local, public, S3, FTP, etc.)  
 ✅ Automatic fallback image if source is missing  
 ✅ Respects Laravel’s Filesystem & URL helpers  
@@ -38,7 +38,7 @@ It’s designed for Laravel projects that need **on-demand thumbnails**, **resiz
 Install the package via Composer:
 
 ```bash
-composer require imeysam/laravel-image-cropper
+composer require imeysam/laravel-picsize
 ```
 
 ## 🔧 1️⃣ Add & Customize Config
@@ -54,7 +54,7 @@ You can do this in two ways:
 
 **Option 1 — Using the Provider name (recommended)**  
 ```bash
-php artisan vendor:publish --provider="Imeysam\ImageCropper\Providers\CropperServiceProvider"
+php artisan vendor:publish --provider="Imeysam\Picsize\Providers\PicsizeServiceProvider"
 ```
 
 **Option 1 — Using the tag `config`**  
@@ -63,7 +63,7 @@ php artisan vendor:publish --tag=config
 ```  
 
 
-> `config/cropper.php`
+> `config/picsize.php`
 
 ```php
 return [
@@ -80,23 +80,23 @@ return [
 
 ## ✨ Usage
 
-Once installed and configured, using the cropper is super simple.
+Once installed and configured, using the picsize is super simple.
 
-You can call the `crop` method using the Facade, or inject the service into your classes.
+You can call the `resize` method using the Facade, or inject the service into your classes.
 
 ---
 
 ### 📌 Basic Using
 
 ```php
-use Cropper;
+use Picsize;
 
 class ImageController extends Controller
 {
     public function show()
     {
-        // Crop to 400x300 and get the full URL
-        $url = Cropper::crop('photos/test.jpg', 400, 300);
+        // Resize to 400x300 and get the full URL
+        $url = Picsize::resize('photos/test.jpg', 400, 300);
         ...
     }
 }
@@ -105,14 +105,14 @@ class ImageController extends Controller
 ### 🧩 Using Dependency Injection
 
 ```php
-use Imeysam\ImageCropper\ImageCropper;
+use Imeysam\Picsize\Picsize;
 
 class ImageController extends Controller
 {
-    public function show(ImageCropper $cropper)
+    public function show(Picsize $picsize)
     {
-        // Crop to 400x300 and get the full URL
-        $url = $cropper->crop('photos/test.jpg', 600, 300);
+        // Resize to 400x300 and get the full URL
+        $url = $picsize->resize('photos/test.jpg', 600, 300);
         ...
     }
 }

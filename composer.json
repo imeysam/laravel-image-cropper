@@ -1,12 +1,12 @@
 {
-  "name": "imeysam/laravel-image-cropper",
+  "name": "imeysam/laravel-picsize",
   "description": "This package helps developers to easily change images dimensions.",
   "type": "library",
   "license": "MIT",
-  "keywords": ["Laravel","Image","Cropper"],
+  "keywords": ["Laravel","Image","Picture", "Resize"],
   "autoload": {
     "psr-4": {
-      "Imeysam\\ImageCropper\\": "src/"
+      "Imeysam\\Picsize\\": "src/"
     }
   },
   "require": {
@@ -16,10 +16,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Imeysam\\ImageCropper\\Providers\\CropperServiceProvider"
+        "Imeysam\\Picsize\\Providers\\PicsizeServiceProvider"
       ],
       "aliases": {
-        "Cropper": "Imeysam\\ImageCropper\\Facades\\Cropper"
+        "Picsize": "Imeysam\\Picsize\\Facades\\Picsize"
       }
     }
   },
