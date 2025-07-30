@@ -8,7 +8,7 @@
 
 ## ✂️ Simple & Flexible Laravel Picsize
 
-**Laravel Picsize** is a simple, flexible and SOLID-friendly Laravel package that helps you resize images on the fly, then store and reuse the resized versions — all with one line of code.
+**Laravel Picsize** is a simple and flexible Laravel package that helps you to resize images on the fly, then store and reuse the resized versions — all with one line of code.
 
 It’s designed for Laravel projects that need **on-demand thumbnails**, **resized images**, or **optimized storage**, without reinventing the wheel every time.
 
@@ -89,7 +89,7 @@ You can call the `resize` method using the Facade, or inject the service into yo
 ### 📌 Basic Using
 
 ```php
-use Picsize;
+use Imeysam\Picsize\Facades\Picsize;
 
 class ImageController extends Controller
 {
@@ -100,7 +100,7 @@ class ImageController extends Controller
         ...
     }
 }
-```
+```                 
 
 ### 🧩 Using Dependency Injection
 
@@ -112,10 +112,16 @@ class ImageController extends Controller
     public function show(Picsize $picsize)
     {
         // Resize to 400x300 and get the full URL
-        $url = $picsize->resize('photos/test.jpg', 600, 300);
+        $url = $picsize->resize('photos/test.jpg', 400, 300);
         ...
     }
 }
+```
+
+### ⚡ Using In Blade
+
+```html
+<img src="{{ Picsize::resize('photos/test.jpg', 400, 300) }}">
 ```
 
 

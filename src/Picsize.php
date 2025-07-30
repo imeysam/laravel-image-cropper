@@ -35,27 +35,34 @@ class Picsize implements PicsizeInterface
         {
             $sourcePath = $this->fallbackImage;
         }
+
         $sourcePath = ltrim($sourcePath, '/');
-
-        $dirname = pathinfo($sourcePath, PATHINFO_DIRNAME);
-        $filename = $dirname . DIRECTORY_SEPARATOR . pathinfo($sourcePath, PATHINFO_FILENAME);
-        $extension = pathinfo($sourcePath, PATHINFO_EXTENSION);
-        $outputName = "{$filename}_{$width}x{$height}.{$extension}";
-
-        $outputFullPath = "{$this->outputPath}/{$outputName}";
         $inputFullPath = "{$this->inputPath}/{$sourcePath}";
 
         $disk = Storage::disk($this->disk);
 
+        // Use the fallback image if the source file could not found
+        if (!$disk->exists($inputFullPath)) {
+            $sourcePath = $this->fallbackImage;
+            $inputFullPath = $this->fallbackImage;
+        }
+
+        $dirname = pathinfo($sourcePath, PATHINFO_DIRNAME);
+
+        $filename = "";
+        if(!empty($dirname) && $dirname !== '.')
+        {
+            $filename .= ($dirname . DIRECTORY_SEPARATOR);
+        }
+        $filename .= pathinfo($sourcePath, PATHINFO_FILENAME);
+        $extension = pathinfo($sourcePath, PATHINFO_EXTENSION);
+        $outputName = "{$filename}_{$width}x{$height}.{$extension}";
+
+        $outputFullPath = "{$this->outputPath}/{$outputName}";
+
         // If the resized image exists
         if ($disk->exists($outputFullPath)) {
             return $disk->url($outputFullPath);
-        }
-
-        // Return fallback image if the source file could not be found
-        if (!$disk->exists($inputFullPath)) {
-            $inputFullPath = $this->fallbackImage;
-            // return asset($this->fallbackImage);
         }
 
         // Read the file content
