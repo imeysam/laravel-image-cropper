@@ -1,7 +1,6 @@
 # Laravel Picsize
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/imeysam/laravel-picsize.svg?style=flat-square)](https://packagist.org/packages/imeysam/laravel-picsize)
-[![Total Downloads](https://img.shields.io/packagist/dt/imeysam/laravel-picsize.svg?style=flat-square)](https://packagist.org/packages/imeysam/laravel-picsize)
 [![License](https://img.shields.io/github/license/imeysam/laravel-picsize.svg?style=flat-square)](LICENSE)
 
 ---
